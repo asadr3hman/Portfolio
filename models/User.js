@@ -15,12 +15,6 @@ const UserSchema = new mongoose.Schema({
         match: [/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, 'Please provide valid email'],
         unique: true,
     },
-    password: {
-        type: String,
-        required: [true, 'Please provide password'],
-        minlength: 6,
-        maxlength: 12
-    },
     profilePicture: { type: String },
     bio: { type: String },
     socialLinks: {
@@ -33,6 +27,7 @@ const UserSchema = new mongoose.Schema({
 )
 
 UserSchema.pre('save', async function (next) {
+    console.log("PRE SAVE called")
     const salt = await bcrypt.genSalt(10)
     this.password = await bcrypt.hash(this.password, salt)
     next()
@@ -43,7 +38,7 @@ UserSchema.methods.createJWT = function () {
 }
 
 UserSchema.methods.checkPassword = async function (inComingPassword) {
-    const isMatch = bcrypt.compare(inComingPassword, this.password)
+    const isMatch = bcrypt.compare(inComingPassword, process.env.ADMIN_PASS)
     return isMatch
 }
 module.exports = mongoose.model('User', UserSchema)
