@@ -20,6 +20,7 @@ const authenticateUser = require('./middleware/authentication')
 //routers
 const authRouter = require('./routes/auth')
 const projectsRouter = require('./routes/projectsRoutes')
+const skillsRouter = require('./routes/skillsRoutes')
 const homeRouter = require('./routes/homeRoutes')
 
 
@@ -44,6 +45,7 @@ app.use(xss());
 app.use('/api/v1/',homeRouter)
 app.use('/api/v1/auth',authRouter)
 app.use('/api/v1/projects',projectsRouter)
+app.use('/api/v1/skills',skillsRouter)
 
 
 app.use(notFoundMiddleware);
