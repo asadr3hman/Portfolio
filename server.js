@@ -21,6 +21,7 @@ const authenticateUser = require('./middleware/authentication')
 const authRouter = require('./routes/auth')
 const projectsRouter = require('./routes/projectsRoutes')
 const skillsRouter = require('./routes/skillsRoutes')
+const contactRouter = require('./routes/contactRoutes')
 const homeRouter = require('./routes/homeRoutes')
 
 
@@ -46,6 +47,7 @@ app.use('/api/v1/',homeRouter)
 app.use('/api/v1/auth',authRouter)
 app.use('/api/v1/projects',projectsRouter)
 app.use('/api/v1/skills',skillsRouter)
+app.use('/api/v1/contact',contactRouter)
 
 
 app.use(notFoundMiddleware);
