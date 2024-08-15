@@ -24,6 +24,7 @@ const skillsRouter = require('./routes/skillsRoutes')
 const contactRouter = require('./routes/contactRoutes')
 const accomplishmentsRouter = require('./routes/accomplishmentsRoutes')
 const educationRouter = require('./routes/educationRoutes')
+const experienceRouter = require('./routes/experienceRoutes')
 const homeRouter = require('./routes/homeRoutes')
 
 
@@ -51,7 +52,8 @@ app.use('/api/v1/projects',projectsRouter)
 app.use('/api/v1/skills',skillsRouter)
 app.use('/api/v1/contact',contactRouter)
 app.use('/api/v1/accomplishments',accomplishmentsRouter)
-app.use('/api/v1/accomplishments',educationRouter)
+app.use('/api/v1/education',educationRouter)
+app.use('/api/v1/experience',experienceRouter)
 
 
 app.use(notFoundMiddleware);

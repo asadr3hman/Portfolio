@@ -17,12 +17,12 @@ router.get('/', getAllEducation);
 router.get('/:id', getEducationById);
 
 // Create a new education entry
-router.post('/', createEducation);
+router.post('/', authenticateUser, createEducation);
 
 // Update an education entry by ID
-router.put('/:id', updateEducation);
+router.put('/:id', authenticateUser, updateEducation);
 
 // Delete an education entry by ID
-router.delete('/:id', deleteEducation);
+router.delete('/:id', authenticateUser, deleteEducation);
 
 module.exports = router;
